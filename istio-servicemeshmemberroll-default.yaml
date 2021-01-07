@@ -4,5 +4,9 @@ metadata:
   name: default
   namespace: necloudnativetraining-istio-system
 spec:
+  istio:
+    global:
+      mtls:
+        enabled: true # Enabling strict mTLS across the mesh
   members:
     - necloudnativetraining-dev
