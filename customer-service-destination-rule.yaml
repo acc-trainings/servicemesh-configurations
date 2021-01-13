@@ -6,7 +6,10 @@ spec:
   host: customer-service
   trafficPolicy:
     loadBalancer:
-      simple: RANDOM #ROUND_ROBIN 
+      simple: RANDOM #ROUND_ROBIN #Load Balancing
+    connectionPool:
+        tcp:
+          maxConnections: 100 # Circuit Breaking
   subsets:
   - name: v1
     labels:
