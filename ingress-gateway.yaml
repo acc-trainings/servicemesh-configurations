@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: ingressgateway
+  name: necloudnativetraining-gateway
 spec:
   selector:
     istio: ingressgateway # use istio default controller
@@ -12,8 +12,6 @@ spec:
         name: http
         number: 80
         protocol: HTTP
-      tls:
-        httpsRedirect: true
     - hosts:
         - '*'
       port:
