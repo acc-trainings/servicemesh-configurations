@@ -16,3 +16,7 @@ spec:
         host: customer-service
         port:
           number: 8080
+    timeout: 10s #Network resilience and testing - Timeout
+    retries:     #Network resilience and testing - retries
+      attempts: 3
+      perTryTimeout: 2s
