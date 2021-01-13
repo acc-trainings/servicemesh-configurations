@@ -11,6 +11,11 @@ spec:
   - match:
     - uri:
         prefix: /customer
+  - fault:  # Network resilience and testing - Fault Injection
+      delay:
+        percentage:
+          value: 0.1
+        fixedDelay: 5s
     route:
     - destination:
         host: customer-service
