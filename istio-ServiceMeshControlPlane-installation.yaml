@@ -2,9 +2,12 @@ apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
 metadata:
   name: basic
-  namespace: necloudnativetraining-istio-system
 spec:
   version: v2.0
+  istio:
+    global:
+      mtls:
+       enabled: true # Enabling of mTLS at Service Mesh
   tracing:
     type: Jaeger
     sampling: 10000
