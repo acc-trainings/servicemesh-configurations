@@ -4,10 +4,6 @@ metadata:
   name: basic
 spec:
   version: v2.0
-  istio:
-    global:
-      mtls:
-       enabled: true # Enabling of mTLS at Service Mesh
   tracing:
     type: Jaeger
     sampling: 10000
