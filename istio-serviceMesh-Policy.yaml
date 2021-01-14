@@ -1,5 +1,5 @@
-apiVersion: authentication.maistra.io/v1
-kind: ServiceMeshPolicy
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
 metadata:
   name: default
   namespace: necloudnativetraining-istio-system

@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   generation: 1
-  name: istiotls-gateway
+  name: necloudnativetraining-istiotls-gateway
   namespace: necloudnativetraining-istio-system
 spec:
   selector:
