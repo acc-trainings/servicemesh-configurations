@@ -3,6 +3,10 @@ kind: ServiceMeshControlPlane
 metadata:
   name: basic
 spec:
+  istio:
+    global:
+      mtls:
+       enabled: true # Enabling of mTLS at Service Mesh
   addons:
     grafana:
       enabled: true
