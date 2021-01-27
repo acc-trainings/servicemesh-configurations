@@ -1,18 +1,14 @@
 apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
+kind: Gateway
 metadata:
-  name: customer-service-virtual-service
+  name: necloudnativetraining-dev-gateway
 spec:
-  gateways:
-    - necloudnativetraining-dev-gateway
-  hosts:
-    - '*'
-  http:
-    - match:
-        - uri:
-            prefix: /customer
-      route:
-        - destination:
-            host: customer-service
-            port:
-              number: 8080
+  selector:
+    istio: ingressgateway
+  servers:
+    - hosts:
+        - '*'
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
