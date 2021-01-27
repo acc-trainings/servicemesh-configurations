@@ -16,3 +16,4 @@ spec:
         host: policy-service
         port:
           number: 8080
+    timeout: 5s
