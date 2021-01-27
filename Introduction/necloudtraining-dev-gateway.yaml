@@ -11,12 +11,8 @@ spec:
     - match:
         - uri:
             prefix: /customer
-      retries:
-        attempts: 3
-        perTryTimeout: 2s
       route:
         - destination:
             host: customer-service
             port:
               number: 8080
-      timeout: 10s
