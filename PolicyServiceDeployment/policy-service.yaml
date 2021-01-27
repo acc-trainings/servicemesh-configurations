@@ -1,0 +1,81 @@
+# Service and Deployment configuration for Policy service deployment.
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: policy-service
+---
+##################################################################################################
+# Policy service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: policy-service
+  labels:
+    app: policy-service
+    service: policy-service
+spec:
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    app: policy-service
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: policy-service-release-1.0.0
+  labels:
+    app: policy-service
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: policy-service
+      version: v1
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app: policy-service
+        version: v1
+    spec:
+      containers:
+      - name: policy-service
+        image: quay.io/necloudnativetraining/policy-service:release-1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: policy-service-release-1.0.0-v2
+  labels:
+    app: policy-service
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: policy-service
+      version: v2
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app: policy-service
+        version: v2
+    spec:
+      serviceAccountName: policy-service
+      containers:
+      - name: policy-service
+        image: quay.io/necloudnativetraining/policy-service:release-1.0.0-v2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
