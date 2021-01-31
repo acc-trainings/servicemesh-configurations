@@ -42,6 +42,6 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
-      env:
+        env:
         - name: spring.profiles.active
           value: local
